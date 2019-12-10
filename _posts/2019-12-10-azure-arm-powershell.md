@@ -1,7 +1,9 @@
 ---
 title: Azure ARM Templates with Azure Powershell CLI
 categories:
-- Azure, ARM, Powershell CLI
+- Azure
+- ARM
+- Powershell CLI
 exerpt: "Using ARM Templates together with the Azure Powershell CLI we can reduce the amount of manual configuration or setup we have to do in an Azure subscription."
 ---
 
