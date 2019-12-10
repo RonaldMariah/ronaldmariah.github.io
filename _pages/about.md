@@ -3,27 +3,12 @@ layout: page
 title: About
 permalink: /about/
 ---
+# Who am I?
 
-[Reverie](https://github.com/amitmerchant1990/reverie) is a Jekyll theme which is simple and opinionated. It's actually a fork of [jekyll-now](https://github.com/barryclark/jekyll-now) with some additional features and personal touches which I've implemented to suit my needs for [my blog](https://www.amitmerchant.com).
+Ronald Mariah is a Cloud Architect currently contributing to the architecture and development of modern Azure based systems at immedia, as well as .NET API development for our own products and those of our customers.
+After joining immedia in 2017, Ronald worked for a few years on extending the data engine functionality of one of our clients’ vast data environments. Ronald was instrumental in our client’s major Cloud Migration project, which entailed the re-hosting of dozens of their services into the Microsoft Azure environment, as well as the simultaneous App Modernisation of many of their legacy systems to take advantage of the built-in optimisations of this Infrastructure-As-A-Service.
+An Honours graduate in Computer Science at the University of KwaZulu-Natal, Ronald is passionate about contributing to the communities in and around Durban.
 
-This is a plug-and-play Jekyll theme which you can use on GitHub Pages without even setting up a local environment.
-
-## Features
-
-- Command-line free fork-first workflow, using GitHub.com to create, customize and post to your blog
-- Fully responsive and mobile optimized base theme
-- Sass/Coffeescript support using Jekyll 2.0
-- Free hosting on your GitHub Pages user site
-- All the SEO goodies comes in-built
-- Markdown blogging
-- Syntax highlighting using Pygments
-    - [Dracula syntax theme](https://draculatheme.com/) included
-- Disqus commenting
-- Google Analytics integration
-- Fuzzy search across blog posts
-- Pagination of posts works out-of-the-box.
-- Categorize posts out-of-the box
-- RSS Feed
-- In-built sitemap
-
-Learn more about it [here](https://github.com/amitmerchant1990/reverie) on how to get started.
+<div>
+<a href="https://www.youracclaim.com/badges/f6e0549c-f9a7-45ce-a964-e8dfb8a31d80"><img src="assets/badges/azure-solutions-architect-expert-600x600.png" width="150"/></a><a href="https://www.youracclaim.com/badges/3cca7eb3-5336-4215-85e5-c34d4e385786"><img src="assets/badges/AzureDeveloper-2019.png" width="150"/></a><a href="https://www.youracclaim.com/badges/846bd022-6eb8-4d56-bc40-eeeeddb19e44"><img src="assets/badges/azure-security-engineer-associate600x600.png" width="150"/></a>
+<div>
