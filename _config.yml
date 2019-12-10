@@ -3,7 +3,7 @@
 #
 
 # Name of your site (displayed in the header)
-name: Reverie
+name: Ronald Mariah
 
 # Name of the author
 author: Ronald Mariah
@@ -12,7 +12,7 @@ author: Ronald Mariah
 description:
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: /images/reverie.png
+avatar: /assets/logos/profile-circle-cropped.png
 
 #
 # Flags below are optional
@@ -21,7 +21,7 @@ avatar: /images/reverie.png
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email: amit.d.merchant@gmail.com
+  email: ronaldmariah@gmail.com
   facebook:
   flickr:
   github: ronaldmariah/ronaldmariah.github.io
