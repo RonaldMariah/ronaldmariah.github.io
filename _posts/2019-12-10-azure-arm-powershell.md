@@ -214,20 +214,20 @@ Once we have the configurable ARM template, we not need to deploy it and pass in
 The first thing we need to do in the powershell script is to login to Azure.
 We can do this with the following command
 
-```Powershell
+```
 Login-AzureRmAccount
 ```
 
 Next lets create a Resource Group which we will use to deploy the Azure Alerts into
 
-```Powershell
+```
 New-AzureRmResourceGroup -Name alerts-rg -Location "South Africa North"
 ```
 
 Next we need to get a list of all the Virtual Machines in the subscription.
 We can save it in a variable so that we can use it later on.
 
-```Powershell
+```
 $virtualMachines = Get-AzureRmVM
 ```
 
@@ -235,7 +235,7 @@ Once we get the list of VMs, we can iterate over them and deploy the alerts for 
 
 **The action group will need to be created beforehand and the Action group Id can be used in the following snippet**
 
-```Powershell
+```
 foreach($virtualMachine in $virtualMachines){ `
     $description = "Virtual Machine CPU High - $($virtualMachine.Name)"
     New-AzureRmResourceGroupDeployment `
