@@ -5,6 +5,8 @@ categories:
 exerpt: "Using ARM Templates together with the Azure Powershell CLI we can reduce the amount of manual configuration or setup we have to do in an Azure subscription."
 ---
 
+Using ARM Templates together with the Azure Powershell CLI we can reduce the amount of manual configuration or setup we have to do in an Azure subscription.
+
 ***Background***
 
 When setting up alerts in Azure, we can use [Azure Alerts](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-overview) which is part of Azure Monitor. Doing this in the Azure Portal is fairly simple, one needs to create an Action Group (contianing the email or endpoint to call when the alert triggers), and the alert criteria.
