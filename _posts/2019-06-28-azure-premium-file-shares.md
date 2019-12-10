@@ -2,6 +2,7 @@
 title: General Availability of Premium Azure File Shares
 categories:
 - Azure
+- Storage
 exerpt: "Azure now supports hosting File Shares on Premium backed storage media (SSDs) and are useful for IO-intensive workloads, hosting databases and high-performance computing (HPC)."
 ---
 

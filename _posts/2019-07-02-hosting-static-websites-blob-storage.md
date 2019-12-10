@@ -2,6 +2,8 @@
 title: Hosting static websites from Azure Storage
 categories:
 - Azure
+- Storage
+- Web
 exerpt: "One of the capabilities of Azure Storage is you can host and serve static web content. In this post, I demonstrate how this can be achieved."
 ---
 

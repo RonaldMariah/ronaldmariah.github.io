@@ -2,6 +2,8 @@
 title: Accessing Azure VMs over RDP and SSH on Private IPs with Azure Bastion Preview
 categories:
 - Azure
+- CDN
+- Security
 exerpt: "Securely connecting from the outside world to workloads and virtual machines on private networks can be challenging. Here's how Azure Bastion can help!"
 ---
 
