@@ -211,13 +211,19 @@ Save the following file as **alert_deployment.json**
 }
 ```
 
-Once we have the configurable ARM template, we not need to deploy it and pass in the parameters we want. To do this we can use the Azure Powershell to script the discovery of the resources and deploy the ARM template.
+Once we have the configurable ARM template, we now need to deploy it and pass in the parameters we want. To do this we can use the Azure Powershell to script the discovery of the resources and deploy the ARM template.
 
 The first thing we need to do in the powershell script is to login to Azure.
 We can do this with the following command
 
 ```
 Login-AzureRmAccount
+```
+
+Now we choose the subscription in Azure that we want to target (there could be more than one subscription linked to our login). Locate the Subscription ID in the Azure Portal to use in the following command.
+
+```
+Select-AzureRmSubscription -Subscription "00000000-0000-0000-0000-000000000000"
 ```
 
 Next lets create a Resource Group which we will use to deploy the Azure Alerts into
