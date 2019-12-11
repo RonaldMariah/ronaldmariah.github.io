@@ -7,6 +7,10 @@ categories:
 exerpt: "Securely connecting from the outside world to workloads and virtual machines on private networks can be challenging. Here's how Azure Bastion can help!"
 ---
 
+Securely connecting from the outside world to workloads and virtual machines on private networks can be challenging. Here's how Azure Bastion can help!
+
+***Overview***
+
 Azure Bastion is a new managed PaaS service that provides seamless RDP and SSH connectivity to your virtual machines over the Secure Sockets Layer (SSL). This is completed without any exposure of the public IPs on your virtual machines. Azure Bastion provisions directly in your Azure Virtual Network, providing bastion host or jump server as-a-service and integrated connectivity to all virtual machines in your virtual networking using RDP/SSH directly from and through your browser and the Azure portal experience. 
 
 For more information on Azure Bastion, check the [docs](https://azure.microsoft.com/en-us/services/azure-bastion/)
