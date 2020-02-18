@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 # Who am I?
-<a href="https://mvp.microsoft.com/en-us/PublicProfile/5003666"><img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/logos/MVP_Logo_Horizontal_Preferred_Cyan300_CMYK_72ppi.png" width="130" class="center"/>
+<a href="https://mvp.microsoft.com/en-us/PublicProfile/5003666"><img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/logos/MVP_Logo_Horizontal_Preferred_Cyan300_CMYK_72ppi.png" class="center"/>
 
 
 Ronald Mariah is a Cloud Architect and Microsoft Most Valuable Professional (MVP) currently contributing to the architecture and development of modern Azure based systems at immedia, as well as .NET API development for our own products and those of our customers.
