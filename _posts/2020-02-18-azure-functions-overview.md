@@ -21,8 +21,7 @@ An example of IaaS is Virtual Machines.
 
 In this model, you choose a hosting plan on which to host your application. You get to choose the specification of the servers that will be running in the background as well as the scaling options that will be available to you. You will not be required to maintain the underlying servers as this will be managed by the Cloud Provider. The prcing model is also pay as you go, and you pay for the duration that the service is provisioned.
 
-An exmaple of PaaS is Azure Web Apps and Azure Web Jobs.
-
+An example of PaaS is Azure Web Apps and Azure Web Jobs.
 
 Azure Functions is built on top of the Azure Web Jobs SDK, which provides a simplified programming model for you to develop your code and respond to events. This programming model eliminates the boilerplate code and allows you to focus on the business requirements.
 
