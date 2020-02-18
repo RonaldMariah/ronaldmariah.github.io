@@ -22,7 +22,7 @@ In this model, you choose a hosting plan on which to host your application. You 
 An exmaple of PaaS is Azure Web Apps and Azure Web Jobs.
 
 
-Azure Functions is built on top of the Azure Functions SDK, which provides a simplified programming model for you to develop your code and respond to events. This programming model eliminates the bloilerplate code and allows you to focus on the business requirements.
+Azure Functions is built on top of the Azure Web Jobs SDK, which provides a simplified programming model for you to develop your code and respond to events. This programming model eliminates the boilerplate code and allows you to focus on the business requirements.
 
 There are two pricing models for Azure Functions, Consumption Plan or have it run in an App Service Plan
 
@@ -34,16 +34,16 @@ In the Consumption Plan, you pay for what you use and also have automatic scalin
 
 Azure also provides 1 million free executions or 400,000GB-s utilisation on the Consumption Plan.
 
-With the Consumption Plan, function execution is limited to 5 minutes. This is a good thing as it prevents functions from running a long period of time and getting build because of a deadlock in your code.
+With the Consumption Plan, function execution is limited to 5 minutes. This is a good thing as it prevents functions from running a long period of time and getting billed because of a deadlock in your code.
 
 Azure Function can also run on an App Service Plan on the Basic tier or higher.
-In this model, it provides pridictable costing, several pricing tiers and no duration constraint (functions can run longer than 5 minutes).
+In this model, it provides predictable costing, several pricing tiers and no duration constraint (functions can run longer than 5 minutes).
 
 There is also a Azure Functions Premium plan which is in preview and provides Virtual Network integration with Azure Functions as well as improved performance.
 
 For more details on the billing you can check the following [link](https://azure.microsoft.com/en-us/pricing/details/functions/) 
 
-The Azure Functions runtime is also available as a Docker container, which you can use to run Azure Function from on-premise as well as other Cloud Providers that support running docker contianers.
+The Azure Functions runtime is also available as a Docker container, which you can use to run Azure Function from on-premise as well as other Cloud Providers that support running docker containers.
 
 **Benefits of Azure Functions**
 Some of the benefits of Azure Functions are:
