@@ -31,6 +31,8 @@ Availability Zones allow customers to run mission-critical applications with hig
 
 Comprehensive set of native business continuity solutions, providing high availability, disaster recovery, and backup to protect your mission critical applications and data.
 
+<img src="https://azurecomcdn.azureedge.net/cvt-9b06bdcb44686a7b9dc65202fa68ee50cddd2b9f2b175c4cec5d9b350c328598/images/page/features/resiliency/availability-zones.jpg" />
+
 **High availability**
 
 Maintaining acceptable continuous performance despite temporary failures  in services, hardware, datacenters, or  fluctuations in load
