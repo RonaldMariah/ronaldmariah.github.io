@@ -57,10 +57,10 @@ Azure is certified under the first international standard to demonstrate the abi
 
 More Links for furthur reading
 
-[Azure Architecture Center](aka.ms/architecture) - Guidance for architecting solutions on Azure using established patterns and practices.
+[Azure Architecture Center](https://aka.ms/architecture) - Guidance for architecting solutions on Azure using established patterns and practices.
 
-[Azure resiliency solutions](azure.com/resiliency) - Build with confidence with high availability, disaster recovery, and backup
+[Azure resiliency solutions](https://azure.com/resiliency) - Build with confidence with high availability, disaster recovery, and backup
 
-[Azure Availability Zones](aka.ms/AvailabilityZones) - High availability for your most demanding mission-critical applications and data
+[Azure Availability Zones](https://aka.ms/AvailabilityZones) - High availability for your most demanding mission-critical applications and data
 
-[Azure regions](aka.ms/AzureRegions) - Azure has more global regions than any other cloud provider—offering the scale needed to bring applications closer to users around the world, preserving data residency, and offering comprehensive compliance and resiliency options for customers.
+[Azure regions](https://aka.ms/AzureRegions) - Azure has more global regions than any other cloud provider—offering the scale needed to bring applications closer to users around the world, preserving data residency, and offering comprehensive compliance and resiliency options for customers.
