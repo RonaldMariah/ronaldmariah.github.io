@@ -56,3 +56,28 @@ kubectl get ns
 ```
 
 <img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 111134.png" />
+
+```
+$logAnalyticsGroupName = "la-rg"
+az group create --location $resourceLocation --name $logAnalyticsGroupName
+$workspaceName="$logAnalyticsGroupName-workspace"
+az monitor log-analytics workspace create --resource-group $logAnalyticsGroupName --workspace-name $workspaceName
+$logAnalyticsWorkspaceId=$(az monitor log-analytics workspace show --resource-group $logAnalyticsGroupName --workspace-name $workspaceName --query customerId --output tsv)
+$logAnalyticsWorkspaceIdEnc=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($logAnalyticsWorkspaceId))
+$logAnalyticsKey=$(az monitor log-analytics workspace get-shared-keys --resource-group $logAnalyticsGroupName --workspace-name $workspaceName --query primarySharedKey --output tsv)
+$logAnalyticsKeyEnc=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($logAnalyticsKey))
+$kubeEnvironmentName="K8sAppServEnv"
+$extensionName = "appservice-kube"
+$namespace="appservice-ns"
+$connectedClusterName = "AzureArcTest1"
+az connectedk8s connect --name $connectedClusterName --resource-group $aksClusterGroupName
+
+az k8s-extension create --resource-group $aksClusterGroupName --name $extensionName --cluster-type connectedClusters --cluster-name $connectedClusterName --extension-type 'Microsoft.Web.Appservice' --release-train stable --auto-upgrade-minor-version true --scope cluster --release-namespace $namespace --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" --configuration-settings "appsNamespace=${namespace}" --configuration-settings "clusterName=${kubeEnvironmentName}" --configuration-settings "loadBalancerIp=${staticIp}" --configuration-settings "keda.enabled=true" --configuration-settings "buildService.storageClassName=default" --configuration-settings "buildService.storageAccessMode=ReadWriteOnce" --configuration-settings "customConfigMap=${namespace}/kube-environment-config" --configuration-settings "envoy.annotations.service.beta.kubernetes.io/azure-load-balancer-resource-group=${aksClusterGroupName}" --configuration-settings "logProcessor.appLogs.destination=log-analytics" --configuration-protected-settings "logProcessor.appLogs.logAnalyticsConfig.customerId=${logAnalyticsWorkspaceIdEnc}" --configuration-protected-settings "logProcessor.appLogs.logAnalyticsConfig.sharedKey=${logAnalyticsKeyEnc}"
+
+$extensionId=$(az k8s-extension show --cluster-type connectedClusters --cluster-name $connectedClusterName --resource-group $aksClusterGroupName --name $extensionName --query id --output tsv)
+
+$connectedClusterId=$(az connectedk8s show --resource-group $aksClusterGroupName --name $connectedClusterName --query id --output tsv)
+
+$customLocationName="MyAKS-RonaldMariah"
+az customlocation create --resource-group $aksClusterGroupName --name $customLocationName --host-resource-id $connectedClusterId --namespace $namespace --cluster-extension-ids $extensionId
+```
