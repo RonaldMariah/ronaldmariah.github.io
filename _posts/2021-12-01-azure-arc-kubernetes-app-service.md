@@ -24,25 +24,25 @@ Azure Arc-enabled Kubernetes lets you make your on-premises or cloud Kubernetes 
 
 If you do not have a Kubernetes cluster, you can create one on Azure (AKS) using the following Azure CLI commands
 
-Define a name for a Resource Group that will contain the AKS instance.
+**Define a name for a Resource Group that will contain the AKS instance.**
 
 ```
 $aksClusterGroupName="<Define your AKS Resource Group name>"
 ```
 
-Define a name for the AKS instance using a format that you want.
+**Define a name for the AKS instance using a format that you want.**
 
 ```
 $aksName="${aksClusterGroupName}-aks"
 ```
 
-At the time of writing this blog post, Azure App Services on Azure Arc Kubernetes is limited to certain regions (West Europe, US East)
+**At the time of writing this blog post, Azure App Services on Azure Arc Kubernetes is limited to certain regions (West Europe, US East)**
 
 ```
 $resourceLocation="West Europe"
 ```
 
-Create the Resource Group for the AKS instance.
+**Create the Resource Group for the AKS instance.**
 
 ```
 az group create -g $aksClusterGroupName -l $resourceLocation
@@ -50,39 +50,39 @@ az group create -g $aksClusterGroupName -l $resourceLocation
 
 <img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 105418.png" />
 
-Create a Kuberbetes Cluster with the following
+**Create a Kuberbetes Cluster with the following**
 
 ```
 az aks create --resource-group $aksClusterGroupName --name $aksName --enable-aad --generate-ssh-keys
 ```
 
-Create a Public IP and obtain the AKS credentials
+**Create a Public IP and obtain the AKS credentials**
 
-Get the name of the Resource Group of the managed AKS resources
+*Get the name of the Resource Group of the managed AKS resources*
 
 ```
 $infra_rg=$(az aks show --resource-group $aksClusterGroupName --name $aksName --output tsv --query nodeResourceGroup)
 ```
 
-Create a Public IP
+**Create a Public IP**
 
 ```
 az network public-ip create --resource-group $infra_rg --name MyPublicIP --sku STANDARD
 ```
 
-Get the Static Public IP address that was created above.
+**Get the Static Public IP address that was created above.**
 
 ```
 $staticIp=$(az network public-ip show --resource-group $infra_rg --name MyPublicIP --output tsv --query ipAddress)
 ```
 
-Obtain the Kubernetes credentials
+**Obtain the Kubernetes credentials**
 
 ```
 az aks get-credentials --resource-group $aksClusterGroupName --name $aksName --admin
 ```
 
-Display the AKS Namespaces
+**Display the AKS Namespaces**
 
 ```
 kubectl get ns
