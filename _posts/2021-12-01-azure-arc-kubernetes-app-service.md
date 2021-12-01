@@ -127,6 +127,8 @@ $logAnalyticsWorkspaceId=$(az monitor log-analytics workspace show --resource-gr
 $logAnalyticsWorkspaceIdEnc=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($logAnalyticsWorkspaceId))
 ```
 
+**Save the Log Analytics Key**
+
 ```
 $logAnalyticsKey=$(az monitor log-analytics workspace get-shared-keys --resource-group $logAnalyticsGroupName --workspace-name $workspaceName --query primarySharedKey --output tsv)
 ```
