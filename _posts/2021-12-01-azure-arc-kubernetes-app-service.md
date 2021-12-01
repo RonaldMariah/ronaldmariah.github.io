@@ -24,10 +24,27 @@ Azure Arc-enabled Kubernetes lets you make your on-premises or cloud Kubernetes 
 
 If you do not have a Kubernetes cluster, you can create one on Azure (AKS) using the following Azure CLI commands
 
+Define a name for a Resource Group that will contain the AKS instance.
+
 ```
 $aksClusterGroupName="<Define your AKS Resource Group name>"
+```
+
+Define a name for the AKS instance using a format that you want.
+
+```
 $aksName="${aksClusterGroupName}-aks"
+```
+
+At the time of writing this blog post, Azure App Services on Azure Arc Kubernetes is limited to certain regions (West Europe, US East)
+
+```
 $resourceLocation="West Europe"
+```
+
+Create the Resource Group for the AKS instance.
+
+```
 az group create -g $aksClusterGroupName -l $resourceLocation
 ````
 
@@ -41,11 +58,27 @@ az aks create --resource-group $aksClusterGroupName --name $aksName --enable-aad
 
 Create a Public IP and obtain the AKS credentials
 
+Get the name of the Resource Group of the managed AKS resources
+
 ```
 $infra_rg=$(az aks show --resource-group $aksClusterGroupName --name $aksName --output tsv --query nodeResourceGroup)
+```
+
+Create a Public IP
+
+```
 az network public-ip create --resource-group $infra_rg --name MyPublicIP --sku STANDARD
+```
+
+Get the Static Public IP address that was created above.
+
+```
 $staticIp=$(az network public-ip show --resource-group $infra_rg --name MyPublicIP --output tsv --query ipAddress)
-	
+```
+
+Obtain the Kubernetes credentials
+
+```
 az aks get-credentials --resource-group $aksClusterGroupName --name $aksName --admin
 ```
 
@@ -88,4 +121,3 @@ az appservice kube create --resource-group $aksClusterGroupName --name $kubeEnvi
 az appservice plan create --resource-group $aksClusterGroupName --name appserviceplan --custom-location $customLocationId --is-linux --per-site-scaling
 
 az webapp create --plan AzureArcAppServicePlan --resource-group $aksClusterGroupName --name AzureArcAppService --custom-location $customLocationId --runtime 'dotnet'
-```
