@@ -56,6 +56,8 @@ az group create -g $aksClusterGroupName -l $resourceLocation
 az aks create --resource-group $aksClusterGroupName --name $aksName --enable-aad --generate-ssh-keys
 ```
 
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 141200.png" />
+
 **Create a Public IP and obtain the AKS credentials**
 
 *Get the name of the Resource Group of the managed AKS resources*
@@ -90,34 +92,137 @@ kubectl get ns
 
 <img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 111134.png" />
 
+**Define a name that we will use for the Log Analytics Resource Group**
+
 ```
 $logAnalyticsGroupName = "la-rg"
+```
+
+**Create the Log Analytics Resource Group**
+
+```
 az group create --location $resourceLocation --name $logAnalyticsGroupName
+```
+
+**Define a name for the Log Analytics Workspace**
+```
 $workspaceName="$logAnalyticsGroupName-workspace"
+```
+
+**Create the Log Analytics Workspace**
+
+```
 az monitor log-analytics workspace create --resource-group $logAnalyticsGroupName --workspace-name $workspaceName
+```
+
+**Save the Log Analytics Workspace ID**
+
+```
 $logAnalyticsWorkspaceId=$(az monitor log-analytics workspace show --resource-group $logAnalyticsGroupName --workspace-name $workspaceName --query customerId --output tsv)
+```
+
+**Encode the Log Analytics ID**
+
+```
 $logAnalyticsWorkspaceIdEnc=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($logAnalyticsWorkspaceId))
+```
+
+```
 $logAnalyticsKey=$(az monitor log-analytics workspace get-shared-keys --resource-group $logAnalyticsGroupName --workspace-name $workspaceName --query primarySharedKey --output tsv)
+```
+
+**Encode the Log Analytics Key**
+
+```
 $logAnalyticsKeyEnc=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($logAnalyticsKey))
+```
+
+**Define a name for the App Service Kubernetes Environment**
+
+```
 $kubeEnvironmentName="K8sAppServEnv"
+```
+
+**Define a name for the App Service Kubernetes extension**
+
+```
 $extensionName = "appservice-kube"
+```
+
+**Define a name for the App Service Namespace**
+
+```
 $namespace="appservice-ns"
+```
+
+**Define a name for the Connected Kubernetes Cluster**
+
+```
 $connectedClusterName = "AzureArcTest1"
+```
+
+**Connect the AKS Cluster to Azure Arc**
+
+```
 az connectedk8s connect --name $connectedClusterName --resource-group $aksClusterGroupName
+```
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 141133.png" />
 
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 141112.png" />
+
+**Create the App Service Kubernetes Extension**
+
+```
 az k8s-extension create --resource-group $aksClusterGroupName --name $extensionName --cluster-type connectedClusters --cluster-name $connectedClusterName --extension-type 'Microsoft.Web.Appservice' --release-train stable --auto-upgrade-minor-version true --scope cluster --release-namespace $namespace --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" --configuration-settings "appsNamespace=${namespace}" --configuration-settings "clusterName=${kubeEnvironmentName}" --configuration-settings "loadBalancerIp=${staticIp}" --configuration-settings "keda.enabled=true" --configuration-settings "buildService.storageClassName=default" --configuration-settings "buildService.storageAccessMode=ReadWriteOnce" --configuration-settings "customConfigMap=${namespace}/kube-environment-config" --configuration-settings "envoy.annotations.service.beta.kubernetes.io/azure-load-balancer-resource-group=${aksClusterGroupName}" --configuration-settings "logProcessor.appLogs.destination=log-analytics" --configuration-protected-settings "logProcessor.appLogs.logAnalyticsConfig.customerId=${logAnalyticsWorkspaceIdEnc}" --configuration-protected-settings "logProcessor.appLogs.logAnalyticsConfig.sharedKey=${logAnalyticsKeyEnc}"
+```
 
+*This will take some time to get enabled, check the Azure Portal to ensure that the Extension shows 'Installed'*
+
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 143020.png" />
+
+**Get the Extension ID of the App Service extension**
+
+```
 $extensionId=$(az k8s-extension show --cluster-type connectedClusters --cluster-name $connectedClusterName --resource-group $aksClusterGroupName --name $extensionName --query id --output tsv)
+```
 
+**Get the Connected Cluster ID**
+
+```
 $connectedClusterId=$(az connectedk8s show --resource-group $aksClusterGroupName --name $connectedClusterName --query id --output tsv)
+```
 
+**Define a name for the Custom Location**
+*This location will appear as a custom Region when deploying services like Azure App Service Plans, which we will see later on*
+
+```
 $customLocationName="MyAKS-RonaldMariah"
+```
+
+**Create the Custom Location**
+
+```
 az customlocation create --resource-group $aksClusterGroupName --name $customLocationName --host-resource-id $connectedClusterId --namespace $namespace --cluster-extension-ids $extensionId
+```
 
+**Get the ID of the Custom Location**
+
+```
 $customLocationId=$(az customlocation show --resource-group $aksClusterGroupName --name $customLocationName --query id --output tsv)
+```
 
+**Create the App Service Kubernetes Environment**
+
+```
 az appservice kube create --resource-group $aksClusterGroupName --name $kubeEnvironmentName --custom-location $customLocationId --static-ip $staticIp
+```
 
+**Create an App Service Plan in the Custom Region (AKS)**
+
+```
 az appservice plan create --resource-group $aksClusterGroupName --name appserviceplan --custom-location $customLocationId --is-linux --per-site-scaling
+```
 
-az webapp create --plan AzureArcAppServicePlan --resource-group $aksClusterGroupName --name AzureArcAppService --custom-location $customLocationId --runtime 'dotnet'
+**Finally we can now create a Web App on the Azure Portal and use the custom Region we created earlier**
+
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 145136.png" />
