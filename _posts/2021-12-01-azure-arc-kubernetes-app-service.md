@@ -80,4 +80,12 @@ $connectedClusterId=$(az connectedk8s show --resource-group $aksClusterGroupName
 
 $customLocationName="MyAKS-RonaldMariah"
 az customlocation create --resource-group $aksClusterGroupName --name $customLocationName --host-resource-id $connectedClusterId --namespace $namespace --cluster-extension-ids $extensionId
+
+$customLocationId=$(az customlocation show --resource-group $aksClusterGroupName --name $customLocationName --query id --output tsv)
+
+az appservice kube create --resource-group $aksClusterGroupName --name $kubeEnvironmentName --custom-location $customLocationId --static-ip $staticIp
+
+az appservice plan create --resource-group $aksClusterGroupName --name appserviceplan --custom-location $customLocationId --is-linux --per-site-scaling
+
+az webapp create --plan AzureArcAppServicePlan --resource-group $aksClusterGroupName --name AzureArcAppService --custom-location $customLocationId --runtime 'dotnet'
 ```
