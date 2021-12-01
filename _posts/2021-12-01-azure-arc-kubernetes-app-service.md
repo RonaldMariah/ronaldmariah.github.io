@@ -32,3 +32,27 @@ az group create -g $aksClusterGroupName -l $resourceLocation
 ````
 
 <img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 105418.png" />
+
+Create a Kuberbetes Cluster with the following
+
+```
+az aks create --resource-group $aksClusterGroupName --name $aksName --enable-aad --generate-ssh-keys
+```
+
+Create a Public IP and obtain the AKS credentials
+
+```
+$infra_rg=$(az aks show --resource-group $aksClusterGroupName --name $aksName --output tsv --query nodeResourceGroup)
+az network public-ip create --resource-group $infra_rg --name MyPublicIP --sku STANDARD
+$staticIp=$(az network public-ip show --resource-group $infra_rg --name MyPublicIP --output tsv --query ipAddress)
+	
+az aks get-credentials --resource-group $aksClusterGroupName --name $aksName --admin
+```
+
+Display the AKS Namespaces
+
+```
+kubectl get ns
+```
+
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 111134.png" />
