@@ -45,8 +45,6 @@ az aks create \
 
 **Create a Public IP and obtain the AKS credentials**
 
-*Get the name of the Resource Group of the managed AKS resources*
-
 ```
 $infra_rg=$(az aks show \
     --resource-group $aksClusterGroupName \
@@ -165,7 +163,7 @@ az k8s-extension create \
 
 <img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 143020.png" />
 
-Once 'Installed', if we now do a 'kubectl get ns' we should see the namespaces for the App Services
+*Once 'Installed', if we now do a 'kubectl get ns' we should see the namespaces for the App Services*
 
 <img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-02 091832.png" />
 
@@ -194,6 +192,7 @@ $connectedClusterId=$(az connectedk8s show \
 In order for us to deploy Azure App Services or any PaaS Services in future, we will need a custom location. This custom location will be our Kubernetes Cluster connected to Azure Arc.
 
 **Define a name for the Custom Location**
+
 *This location will appear as a custom Region when deploying services like Azure App Service Plans, which we will see later on*
 
 ```
