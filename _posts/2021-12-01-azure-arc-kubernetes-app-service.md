@@ -48,9 +48,21 @@ az aks create \
 *Get the name of the Resource Group of the managed AKS resources*
 
 ```
-$infra_rg=$(az aks show --resource-group $aksClusterGroupName --name $aksName --output tsv --query nodeResourceGroup)
-az network public-ip create --resource-group $infra_rg --name MyPublicIP --sku STANDARD
-$staticIp=$(az network public-ip show --resource-group $infra_rg --name MyPublicIP --output tsv --query ipAddress)
+$infra_rg=$(az aks show \
+    --resource-group $aksClusterGroupName \
+    --name $aksName \
+    --output tsv \
+    --query nodeResourceGroup)
+
+az network public-ip create \
+    --resource-group $infra_rg \
+    --name MyPublicIP --sku STANDARD
+
+$staticIp=$(az network public-ip show \
+    --resource-group $infra_rg \
+    --name MyPublicIP \
+    --output tsv \
+    --query ipAddress)
 
 az aks get-credentials \
     --resource-group $aksClusterGroupName \
@@ -80,14 +92,24 @@ az monitor log-analytics workspace create \
 **Save and Encode the Log Analytics Workspace ID**
 
 ```
-$logAnalyticsWorkspaceId=$(az monitor log-analytics workspace show --resource-group $logAnalyticsGroupName --workspace-name $workspaceName --query customerId --output tsv)
+$logAnalyticsWorkspaceId=$(az monitor log-analytics workspace show \
+    --resource-group $logAnalyticsGroupName \
+    --workspace-name $workspaceName \
+    --query customerId \
+    --output tsv)
+
 $logAnalyticsWorkspaceIdEnc=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($logAnalyticsWorkspaceId))
 ```
 
 **Save and Encode the Log Analytics Key**
 
 ```
-$logAnalyticsKey=$(az monitor log-analytics workspace get-shared-keys --resource-group $logAnalyticsGroupName --workspace-name $workspaceName --query primarySharedKey --output tsv)
+$logAnalyticsKey=$(az monitor log-analytics workspace get-shared-keys \
+    --resource-group $logAnalyticsGroupName \
+    --workspace-name $workspaceName \
+    --query primarySharedKey \
+    --output tsv)
+
 $logAnalyticsKeyEnc=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($logAnalyticsKey))
 ```
 
@@ -148,13 +170,23 @@ Once 'Installed', if we now do a 'kubectl get ns' we should see the namespaces f
 **Get the Extension ID of the App Service extension**
 
 ```
-$extensionId=$(az k8s-extension show --cluster-type connectedClusters --cluster-name $connectedClusterName --resource-group $aksClusterGroupName --name $extensionName --query id --output tsv)
+$extensionId=$(az k8s-extension show \
+    --cluster-type connectedClusters \
+    --cluster-name $connectedClusterName \
+    --resource-group $aksClusterGroupName \
+    --name $extensionName \
+    --query id \
+    --output tsv)
 ```
 
 **Get the Connected Cluster ID**
 
 ```
-$connectedClusterId=$(az connectedk8s show --resource-group $aksClusterGroupName --name $connectedClusterName --query id --output tsv)
+$connectedClusterId=$(az connectedk8s show \
+    --resource-group $aksClusterGroupName \
+    --name $connectedClusterName \
+    --query id \
+    --output tsv)
 ```
 
 In order for us to deploy Azure App Services or any PaaS Services in future, we will need a custom location. This custom location will be our Kubernetes Cluster connected to Azure Arc.
@@ -169,25 +201,42 @@ $customLocationName="MyAKS-RonaldMariah"
 **Create the Custom Location**
 
 ```
-az customlocation create --resource-group $aksClusterGroupName --name $customLocationName --host-resource-id $connectedClusterId --namespace $namespace --cluster-extension-ids $extensionId
+az customlocation create \
+    --resource-group $aksClusterGroupName \
+    --name $customLocationName \
+    --host-resource-id $connectedClusterId \
+    --namespace $namespace \
+    --cluster-extension-ids $extensionId
 ```
 
 **Get the ID of the Custom Location**
 
 ```
-$customLocationId=$(az customlocation show --resource-group $aksClusterGroupName --name $customLocationName --query id --output tsv)
+$customLocationId=$(az customlocation show \
+    --resource-group $aksClusterGroupName \
+    --name $customLocationName \
+    --query id --output tsv)
 ```
 
 **Create the App Service Kubernetes Environment**
 
 ```
-az appservice kube create --resource-group $aksClusterGroupName --name $kubeEnvironmentName --custom-location $customLocationId --static-ip $staticIp
+az appservice kube create \
+    --resource-group $aksClusterGroupName \
+    --name $kubeEnvironmentName \
+    --custom-location $customLocationId \
+    --static-ip $staticIp
 ```
 
 **Create an App Service Plan in the Custom Region (AKS)**
 
 ```
-az appservice plan create --resource-group $aksClusterGroupName --name appserviceplan --custom-location $customLocationId --is-linux --per-site-scaling
+az appservice plan create \
+    --resource-group $aksClusterGroupName \
+    --name appserviceplan \
+    --custom-location $customLocationId \
+    --is-linux \
+    --per-site-scaling
 ```
 
 **Finally we can now create a Web App on the Azure Portal and use the custom Region we created earlier**
