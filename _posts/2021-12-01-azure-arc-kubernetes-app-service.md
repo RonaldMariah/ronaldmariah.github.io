@@ -241,7 +241,7 @@ az appservice plan create \
     --per-site-scaling
 ```
 
-**Finally we can now create a Web App on the Azure Portal and use the custom Region we created earlier**
+**Finally we can now create a Web App on the Preview Azure Portal and use the Custom Region we created earlier**
 
 <img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 145136.png" />
 
