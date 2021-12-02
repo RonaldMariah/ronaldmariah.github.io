@@ -117,7 +117,9 @@ $logAnalyticsKeyEnc=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBy
 
 ```
 $connectedClusterName = "AzureArcTest1"
-az connectedk8s connect --name $connectedClusterName --resource-group $aksClusterGroupName
+az connectedk8s connect \
+    --name $connectedClusterName \
+    --resource-group $aksClusterGroupName
 ```
 
 <img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 141133.png" />
