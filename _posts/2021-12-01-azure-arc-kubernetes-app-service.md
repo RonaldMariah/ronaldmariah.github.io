@@ -234,3 +234,7 @@ az appservice plan create --resource-group $aksClusterGroupName --name appservic
 **Finally we can now create a Web App on the Azure Portal and use the custom Region we created earlier**
 
 <img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 145136.png" />
+
+Now we are done with setting up Azure App Services on Kubernetes connected to Azure Arc. We can now utilise the benefits of Azure PaaS Services with our existing workloads running in Kubernetes on-premise or any other cloud provider.
+
+Hope you enjoyed the walkthrough of how we can get this set up and using this in production in future!
