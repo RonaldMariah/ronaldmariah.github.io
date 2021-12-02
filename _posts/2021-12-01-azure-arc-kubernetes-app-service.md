@@ -34,7 +34,7 @@ az group create -g $aksClusterGroupName -l $resourceLocation
 
 az aks create \
     --resource-group $aksClusterGroupName \
-    --name $aksName -\
+    --name $aksName \
     -enable-aad \
     --generate-ssh-keys
 ```
