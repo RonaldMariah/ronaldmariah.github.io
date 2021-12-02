@@ -182,6 +182,10 @@ az k8s-extension create --resource-group $aksClusterGroupName --name $extensionN
 
 <img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 143020.png" />
 
+Once 'Installed', if we now do a 'kubectl get ns' we should see the namespaces for the App Services
+
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-02 091832.png" />
+
 **Get the Extension ID of the App Service extension**
 
 ```
