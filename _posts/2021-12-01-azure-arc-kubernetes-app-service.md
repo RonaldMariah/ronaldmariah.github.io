@@ -32,7 +32,11 @@ $aksName="${aksClusterGroupName}-aks"
 $resourceLocation="West Europe"
 az group create -g $aksClusterGroupName -l $resourceLocation
 
-az aks create --resource-group $aksClusterGroupName --name $aksName --enable-aad --generate-ssh-keys
+az aks create \
+    --resource-group $aksClusterGroupName \
+    --name $aksName -\
+    -enable-aad \
+    --generate-ssh-keys
 ```
 
 <img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 105418.png" />
@@ -48,7 +52,9 @@ $infra_rg=$(az aks show --resource-group $aksClusterGroupName --name $aksName --
 az network public-ip create --resource-group $infra_rg --name MyPublicIP --sku STANDARD
 $staticIp=$(az network public-ip show --resource-group $infra_rg --name MyPublicIP --output tsv --query ipAddress)
 
-az aks get-credentials --resource-group $aksClusterGroupName --name $aksName --admin
+az aks get-credentials \
+    --resource-group $aksClusterGroupName \
+    --name $aksName --admin
 ```
 
 **Display the AKS Namespaces**
@@ -65,7 +71,10 @@ kubectl get ns
 $logAnalyticsGroupName = "la-rg"
 az group create --location $resourceLocation --name $logAnalyticsGroupName
 $workspaceName="$logAnalyticsGroupName-workspace"
-az monitor log-analytics workspace create --resource-group $logAnalyticsGroupName --workspace-name $workspaceName
+
+az monitor log-analytics workspace create \
+    --resource-group $logAnalyticsGroupName \
+    --workspace-name $workspaceName
 ```
 
 **Save and Encode the Log Analytics Workspace ID**
@@ -98,7 +107,28 @@ $kubeEnvironmentName="K8sAppServEnv"
 $extensionName = "appservice-kube"
 $namespace="appservice-ns"
 
-az k8s-extension create --resource-group $aksClusterGroupName --name $extensionName --cluster-type connectedClusters --cluster-name $connectedClusterName --extension-type 'Microsoft.Web.Appservice' --release-train stable --auto-upgrade-minor-version true --scope cluster --release-namespace $namespace --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" --configuration-settings "appsNamespace=${namespace}" --configuration-settings "clusterName=${kubeEnvironmentName}" --configuration-settings "loadBalancerIp=${staticIp}" --configuration-settings "keda.enabled=true" --configuration-settings "buildService.storageClassName=default" --configuration-settings "buildService.storageAccessMode=ReadWriteOnce" --configuration-settings "customConfigMap=${namespace}/kube-environment-config" --configuration-settings "envoy.annotations.service.beta.kubernetes.io/azure-load-balancer-resource-group=${aksClusterGroupName}" --configuration-settings "logProcessor.appLogs.destination=log-analytics" --configuration-protected-settings "logProcessor.appLogs.logAnalyticsConfig.customerId=${logAnalyticsWorkspaceIdEnc}" --configuration-protected-settings "logProcessor.appLogs.logAnalyticsConfig.sharedKey=${logAnalyticsKeyEnc}"
+az k8s-extension create \
+    --resource-group $aksClusterGroupName \
+    --name $extensionName \
+    --cluster-type connectedClusters \
+    --cluster-name $connectedClusterName \
+    --extension-type 'Microsoft.Web.Appservice' \
+    --release-train stable \
+    --auto-upgrade-minor-version true \
+    --scope cluster \
+    --release-namespace $namespace \
+    --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" \
+    --configuration-settings "appsNamespace=${namespace}" \
+    --configuration-settings "clusterName=${kubeEnvironmentName}" \
+    --configuration-settings "loadBalancerIp=${staticIp}" \
+    --configuration-settings "keda.enabled=true" \
+    --configuration-settings "buildService.storageClassName=default" \
+    --configuration-settings "buildService.storageAccessMode=ReadWriteOnce" \
+    --configuration-settings "customConfigMap=${namespace}/kube-environment-config" \
+    --configuration-settings "envoy.annotations.service.beta.kubernetes.io/azure-load-balancer-resource-group=${aksClusterGroupName}" \
+    --configuration-settings "logProcessor.appLogs.destination=log-analytics" \
+    --configuration-protected-settings "logProcessor.appLogs.logAnalyticsConfig.customerId=${logAnalyticsWorkspaceIdEnc}" \
+    --configuration-protected-settings "logProcessor.appLogs.logAnalyticsConfig.sharedKey=${logAnalyticsKeyEnc}"
 ```
 
 *This will take some time for the extension to be installed, check the Azure Portal to ensure that the Extension shows 'Installed'*
