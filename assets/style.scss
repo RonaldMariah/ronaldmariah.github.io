@@ -1127,6 +1127,15 @@ Modules - reusable parts of our design
   text-align: center;
 }
 
+img {
+  transition:transform 0.25s ease;
+}
+
+img:hover {
+  -webkit-transform:scale(1.5); /* or some other value */
+  transform:scale(1.5);
+}
+
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 //@import "highlights";
