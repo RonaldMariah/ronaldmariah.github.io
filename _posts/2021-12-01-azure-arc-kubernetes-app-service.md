@@ -24,13 +24,13 @@ Azure Arc-enabled Kubernetes lets you make your on-premises or cloud Kubernetes 
 
 If you do not have a Kubernetes cluster, you can create one on Azure (AKS) using the following Azure CLI commands
 
-**Define a name for a Resource Group that will contain the AKS instance.**
+**Define a name for a Resource Group that will contain the AKS instance**
 
 ```
 $aksClusterGroupName="<Define your AKS Resource Group name>"
 ```
 
-**Define a name for the AKS instance using a format that you want.**
+**Define a name for the AKS instance using a format that you want**
 
 ```
 $aksName="${aksClusterGroupName}-aks"
@@ -46,7 +46,7 @@ $resourceLocation="West Europe"
 
 ```
 az group create -g $aksClusterGroupName -l $resourceLocation
-````
+```
 
 <img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 105418.png" />
 
@@ -193,6 +193,8 @@ $extensionId=$(az k8s-extension show --cluster-type connectedClusters --cluster-
 ```
 $connectedClusterId=$(az connectedk8s show --resource-group $aksClusterGroupName --name $connectedClusterName --query id --output tsv)
 ```
+
+In order for us to deploy Azure App Services or any PaaS Services in future, we will need a custom location. This custom location will be our Kubernetes Cluster connected to Azure Arc.
 
 **Define a name for the Custom Location**
 *This location will appear as a custom Region when deploying services like Azure App Service Plans, which we will see later on*
