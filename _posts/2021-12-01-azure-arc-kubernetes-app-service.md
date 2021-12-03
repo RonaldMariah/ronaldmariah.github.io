@@ -26,7 +26,7 @@ If you do not have a Kubernetes cluster, you can create one on Azure (AKS) using
 
 **Create a Resource Group and an Azure Kubernetes Cluster**
 
-```
+```powershell
 $aksClusterGroupName="azure-arc"
 $aksName="${aksClusterGroupName}-aks"
 $resourceLocation="West Europe"
@@ -45,7 +45,7 @@ az aks create \
 
 **Create a Public IP and obtain the AKS credentials**
 
-```
+```powershell
 $infra_rg=$(az aks show \
     --resource-group $aksClusterGroupName \
     --name $aksName \
@@ -69,7 +69,7 @@ az aks get-credentials \
 
 **Display the AKS Namespaces**
 
-```
+```powershell
 kubectl get ns
 ```
 
@@ -77,7 +77,7 @@ kubectl get ns
 
 **Create the Log Analytics Resource Group and Log Analytics resource**
 
-```
+```powershell
 $logAnalyticsGroupName = "la-rg"
 az group create --location $resourceLocation --name $logAnalyticsGroupName
 $workspaceName="$logAnalyticsGroupName-workspace"
@@ -89,7 +89,7 @@ az monitor log-analytics workspace create \
 
 **Save and Encode the Log Analytics Workspace ID**
 
-```
+```powershell
 $logAnalyticsWorkspaceId=$(az monitor log-analytics workspace show \
     --resource-group $logAnalyticsGroupName \
     --workspace-name $workspaceName \
@@ -101,7 +101,7 @@ $logAnalyticsWorkspaceIdEnc=[Convert]::ToBase64String([System.Text.Encoding]::UT
 
 **Save and Encode the Log Analytics Key**
 
-```
+```powershell
 $logAnalyticsKey=$(az monitor log-analytics workspace get-shared-keys \
     --resource-group $logAnalyticsGroupName \
     --workspace-name $workspaceName \
@@ -113,7 +113,7 @@ $logAnalyticsKeyEnc=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBy
 
 **Connect the AKS Cluster to Azure Arc**
 
-```
+```powershell
 $connectedClusterName = "AzureArcTest1"
 az connectedk8s connect \
     --name $connectedClusterName \
@@ -124,7 +124,7 @@ az connectedk8s connect \
 
 **Create the App Service Kubernetes Extension**
 
-```
+```powershell
 $kubeEnvironmentName="K8sAppServEnv"
 $extensionName = "appservice-kube"
 $namespace="appservice-ns"
@@ -169,7 +169,7 @@ az k8s-extension create \
 
 **Get the Extension ID of the App Service extension**
 
-```
+```powershell
 $extensionId=$(az k8s-extension show \
     --cluster-type connectedClusters \
     --cluster-name $connectedClusterName \
@@ -181,7 +181,7 @@ $extensionId=$(az k8s-extension show \
 
 **Get the Connected Cluster ID**
 
-```
+```powershell
 $connectedClusterId=$(az connectedk8s show \
     --resource-group $aksClusterGroupName \
     --name $connectedClusterName \
@@ -195,13 +195,13 @@ In order for us to deploy Azure App Services or any PaaS Services in future, we 
 
 *This location will appear as a custom Region when deploying services like Azure App Service Plans, which we will see later on*
 
-```
+```powershell
 $customLocationName="MyAKS-RonaldMariah"
 ```
 
 **Create the Custom Location**
 
-```
+```powershell
 az customlocation create \
     --resource-group $aksClusterGroupName \
     --name $customLocationName \
@@ -212,7 +212,7 @@ az customlocation create \
 
 **Get the ID of the Custom Location**
 
-```
+```powershell
 $customLocationId=$(az customlocation show \
     --resource-group $aksClusterGroupName \
     --name $customLocationName \
@@ -221,7 +221,7 @@ $customLocationId=$(az customlocation show \
 
 **Create the App Service Kubernetes Environment**
 
-```
+```powershell
 az appservice kube create \
     --resource-group $aksClusterGroupName \
     --name $kubeEnvironmentName \
@@ -231,7 +231,7 @@ az appservice kube create \
 
 **Create an App Service Plan in the Custom Region (AKS)**
 
-```
+```powershell
 az appservice plan create \
     --resource-group $aksClusterGroupName \
     --name appserviceplan \
