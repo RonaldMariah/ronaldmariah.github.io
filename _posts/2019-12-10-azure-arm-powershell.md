@@ -23,7 +23,7 @@ Defining ARM Templates for the Azure Alerts and using the Azure Powershell CLI t
 
 One way to get the ARM Template for any resource is to manually deploy the resource into Azure, then on the resource blade, we can get the template by going to **Export Template**
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arm-powershell/export-template.JPG" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-arm-powershell/export-template.JPG" />
 
 We can then save this template locally and edit it, so that it is configurable. 
 

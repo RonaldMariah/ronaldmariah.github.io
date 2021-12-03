@@ -26,11 +26,11 @@ az storage account create --sku Standard_LRS --location <location> --kind Storag
 Once the storage account is created, note the response from the command which shows the JSON output of the storage account that was created.
 There is a part that shows the "primaryEndpoints". Note down the entry for "web"
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/hosting-static-websites/primary-endpoints.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/hosting-static-websites/primary-endpoints.png" />
 
 This URL for "web" will be the public endpoint we will use when browsing to the static website. If we browse to it now, we will get a 404.
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/hosting-static-websites/404-static-website.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/hosting-static-websites/404-static-website.png" />
 
 Our static content will need to be stored in a container in our blob storage account.
 This container is a special container called $web, which is the root of the static website.
@@ -58,7 +58,7 @@ In this post, I'll use AzCopy, which you can find the latest version at https://
 We will first need a Shared Acess Signature (SAS) token in order to use AzCopy.
 We can generate one from the Azure Portal
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/hosting-static-websites/sas-generate-portal.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/hosting-static-websites/sas-generate-portal.png" />
 
 Once the SAS Token is generated, use it in the following AzCopy commands to copy the contents of the repo into the $web contianer
 
@@ -77,11 +77,11 @@ Once the SAS Token is generated, use it in the following AzCopy commands to copy
 
 Once all the content is copied over, we can enable the Static Website feature on Azure Blob Storage.
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/hosting-static-websites/enable-static-website.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/hosting-static-websites/enable-static-website.png" />
 
 Once this is enabled, browse to the public endpoint for the static website.
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/hosting-static-websites/browse-static-website.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/hosting-static-websites/browse-static-website.png" />
 
 Now that we hosted our static website in Azure Storage, we can now add an Azure CDN on top of this storage account so that the users don't experience latency issues when they are visiting our webpage from a location far away from our storage account's location.
 

@@ -21,24 +21,24 @@ Using the [preview portal](https://aka.ms/BastionHost), we can deploy a Bastion 
 
 Here's a few screenshots of the Bastion and Virtual Network setup I have.
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-bastion-preview/bastion-create.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-bastion-preview/bastion-create.png" />
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-bastion-preview/bastion-vnet-create.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-bastion-preview/bastion-vnet-create.png" />
 
 One thing to note is that, in order to deploy a Bastion host into an existing Virtual Network, that VNET needs to have a subnet called AzureBastionSubnet with atleast the /27 address space size.
 
 Once we have the VNET and Bastion host provisioned, we can now deploy a Virtual Machine into the default subnet of the VNET we just created and connect to it on it's private IP.
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-bastion-preview/create-vm-bastion.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-bastion-preview/create-vm-bastion.png" />
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-bastion-preview/create-vm-networking.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-bastion-preview/create-vm-networking.png" />
 
 Ensure that there are no Public IPs, or inbound ports opened on the VM. Access to the VM will be governed by the Bastion host on private IPs.
 
 Once the VM, is deployed, when we click 'Connect", we see a new option for connecting to the Virtual Machine. Provide the necessary details and 'Connect'.
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-bastion-preview/portal-connect.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-bastion-preview/portal-connect.png" />
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-bastion-preview/ssh-portal-bastion.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-bastion-preview/ssh-portal-bastion.png" />
 
 And we done!
