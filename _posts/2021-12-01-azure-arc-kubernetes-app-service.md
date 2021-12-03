@@ -8,7 +8,7 @@ categories:
 exerpt: "Deploying Azure App Services on Azure Arc enabled Kubernetes Clusters"
 ---
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/azure-arc-control-plane.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-arc-kubernetes-app-service/azure-arc-control-plane.png" />
 
 - Azure Arc enables customers to manage resources outside of Azure. Resources includes
     - Servers - both physical and virtual machines running Windows or Linux.
@@ -39,9 +39,9 @@ az aks create \
     --generate-ssh-keys
 ```
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 105418.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 105418.png" />
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 141200.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 141200.png" />
 
 **Create a Public IP and obtain the AKS credentials**
 
@@ -73,7 +73,7 @@ az aks get-credentials \
 kubectl get ns
 ```
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 111134.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 111134.png" />
 
 **Create the Log Analytics Resource Group and Log Analytics resource**
 
@@ -120,7 +120,7 @@ az connectedk8s connect \
     --resource-group $aksClusterGroupName
 ```
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 141133.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 141133.png" />
 
 **Create the App Service Kubernetes Extension**
 
@@ -157,15 +157,15 @@ az k8s-extension create \
 
 **Before**
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 141112.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 141112.png" />
 
 **After**
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 143020.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 143020.png" />
 
 *Once 'Installed', if we now do a 'kubectl get ns' we should see the namespaces for the App Services*
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-02 091832.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-02 091832.png" />
 
 **Get the Extension ID of the App Service extension**
 
@@ -242,7 +242,7 @@ az appservice plan create \
 
 **Finally we can now create a Web App on the Preview Azure Portal and use the Custom Region we created earlier**
 
-<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/master/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 145136.png" />
+<img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/azure-arc-kubernetes-app-service/Screenshot 2021-12-01 145136.png" />
 
 Now we are done with setting up Azure App Services on Kubernetes connected to Azure Arc. We can now utilise the benefits of Azure PaaS Services with our existing workloads running in Kubernetes on-premise or any other cloud provider.
 
