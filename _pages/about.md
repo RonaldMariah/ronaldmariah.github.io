@@ -4,8 +4,6 @@ title: About
 permalink: /about/
 ---
 # Who am I?
-<a href="https://mvp.microsoft.com/en-us/PublicProfile/5003666"><img src="https://github.com/RonaldMariah/ronaldmariah.github.io/raw/main/assets/logos/MVP_Logo_Horizontal_Preferred_Cyan300_CMYK_300ppi.png" class="center"/>
-
 
 Ronald Mariah is a DevOps Lead currently contributing to the technical direction of the DevOps landscape at BET Software.
 An Honours graduate in Computer Science at the University of KwaZulu-Natal, Ronald is passionate about contributing to the communities in and around Durban.
