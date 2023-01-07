@@ -51,7 +51,7 @@ In addition to the issues of image size and security, there are several other be
 
 - Use tags to help identify and manage your images. Tags are labels that you can apply to images to help organize them and make them easier to find.
 
-- Use a consistent naming convention for your images to help keep them organized. For example, you could use a naming scheme like <mark><username>/<project>:<tag></mark>, where <mark><username></mark> is your Docker Hub username, <mark><project></mark> is the name of the project, and <mark><tag></mark> is a label that identifies the version of the image.
+- Use a consistent naming convention for your images to help keep them organized. For example, you could use a naming scheme like <mark>username/project:tag</mark>, where <mark>username</mark> is your Docker Hub username, <mark>project</mark> is the name of the project, and <mark>tag</mark> is a label that identifies the version of the image.
 
 - Regularly update your images to ensure that they are using the latest versions of libraries and dependencies. This can help prevent security vulnerabilities and improve performance.
 
