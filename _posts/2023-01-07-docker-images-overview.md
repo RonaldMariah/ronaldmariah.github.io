@@ -17,11 +17,11 @@ In this blog, we will discuss how to inspect and troubleshoot Docker images, as 
 
 One of the first steps in troubleshooting a Docker image is to inspect it to see what is inside. There are several commands you can use to do this, including:
 
-    - **docker image inspect**: This command allows you to view detailed information about a Docker image, including its size, ID, created and modified dates, and more.
+    **docker image inspect**: This command allows you to view detailed information about a Docker image, including its size, ID, created and modified dates, and more.
 
-    - **docker image history**: This command shows you the history of an image, including the commands used to create it and any parent images.
+    **docker image history**: This command shows you the history of an image, including the commands used to create it and any parent images.
 
-    - **docker image ls**: This command lists all of the images on your system, along with their IDs, sizes, and tags.
+    **docker image ls**: This command lists all of the images on your system, along with their IDs, sizes, and tags.
 
 By using these commands, you can get a better understanding of what is inside your Docker images and how they were created.
 
