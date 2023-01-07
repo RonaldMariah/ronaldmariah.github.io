@@ -29,9 +29,9 @@ By using these commands, you can get a better understanding of what is inside yo
 
 There are several common issues that can arise when working with Docker images, including:
 
-- **Images not building correctly**: If your Docker image is not building correctly, it could be due to a number of issues, such as a syntax error in the Dockerfile, a problem with a build argument, or a missing dependency. To troubleshoot this issue, you can try building the image with the **--verbose** flag, which will provide more detailed output that can help you identify the problem. You can also try using the **docker image history** command to see the steps that were taken during the build process.
+- **Images not building correctly**: If your Docker image is not building correctly, it could be due to a number of issues, such as a syntax error in the Dockerfile, a problem with a build argument, or a missing dependency. To troubleshoot this issue, you can try building the image with the <mark>--verbose</mark> flag, which will provide more detailed output that can help you identify the problem. You can also try using the <mark>docker</mark> image history** command to see the steps that were taken during the build process.
 
-- **Images not running correctly**: If your Docker image is not running correctly, it could be due to a problem with the application code, a missing dependency, or a problem with the runtime environment. To troubleshoot this issue, you can try running the image with the **--verbose** flag, which will provide more detailed output that can help you identify the problem. You can also try running the image with the **--entrypoint** flag, which allows you to specify a command to run when the container starts. This can be useful for running commands like bash or sh to debug the container.
+- **Images not running correctly**: If your Docker image is not running correctly, it could be due to a problem with the application code, a missing dependency, or a problem with the runtime environment. To troubleshoot this issue, you can try running the image with the <mark>--verbose</mark> flag, which will provide more detailed output that can help you identify the problem. You can also try running the image with the <mark>--entrypoint</mark> flag, which allows you to specify a command to run when the container starts. This can be useful for running commands like bash or sh to debug the container.
 
 ***Image size and Security***
 
@@ -51,7 +51,7 @@ In addition to the issues of image size and security, there are several other be
 
 - Use tags to help identify and manage your images. Tags are labels that you can apply to images to help organize them and make them easier to find.
 
-- Use a consistent naming convention for your images to help keep them organized. For example, you could use a naming scheme like **<username>/<project>:<tag>**, where **<username>** is your Docker Hub username, **<project>** is the name of the project, and **<tag>** is a label that identifies the version of the image.
+- Use a consistent naming convention for your images to help keep them organized. For example, you could use a naming scheme like <mark><username>/<project>:<tag></mark>, where <mark><username></mark> is your Docker Hub username, <mark><project></mark> is the name of the project, and <mark><tag></mark> is a label that identifies the version of the image.
 
 - Regularly update your images to ensure that they are using the latest versions of libraries and dependencies. This can help prevent security vulnerabilities and improve performance.
 
