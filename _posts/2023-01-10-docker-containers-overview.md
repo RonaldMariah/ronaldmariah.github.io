@@ -1,10 +1,10 @@
 ---
-title: Docker Containers Overview
+title: 'Docker Containers: The Ultimate Guide for Effortless Deployment and Secure Execution in Production'
 categories:
 - Docker
 - Containers
 - Containerisation
-exerpt: "Docker Containers Overview"
+exerpt: "Docker Containers: The Ultimate Guide for Effortless Deployment and Secure Execution in Production"
 ---
 
 Docker is a platform that allows developers to easily create, deploy, and run applications in containers. Containers are a lightweight form of virtualization that allow you to package and isolate an application and its dependencies in a single container. This makes it easy to run the application on any machine that has Docker installed, without the need for any additional setup or configuration.
