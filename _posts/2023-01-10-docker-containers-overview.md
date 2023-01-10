@@ -18,16 +18,6 @@ For example, to run a container from an image named "myapp", you would use the f
 ```bash
 docker run --name mycontainer -d myapp
 ```
-**
-Docker is a platform that allows developers to easily create, deploy, and run applications in containers. Containers are a lightweight form of virtualization that allow you to package and isolate an application and its dependencies in a single container. This makes it easy to run the application on any machine that has Docker installed, without the need for any additional setup or configuration.
-
-One of the main advantages of using Docker is that it allows you to easily run multiple versions of an application or its dependencies on the same machine without them interfering with each other. This makes it easy to test and deploy different versions of your application, and also makes it easy to roll back to a previous version if something goes wrong.
-
-To run a container in Docker, you first need to create an image of your application. An image is a snapshot of your application and its dependencies at a particular point in time. You can create an image by writing a Dockerfile, which is a script that specifies how to build your application and its dependencies into an image. Once you have created your image, you can use the docker run command to start a new container from the image.
-
-For example, to run a container from an image named "myapp", you would use the following command:
-
-docker run --name mycontainer -d myapp
 
 This will start a new container named "mycontainer" in the background (-d) and runs it with the image "myapp".
 
