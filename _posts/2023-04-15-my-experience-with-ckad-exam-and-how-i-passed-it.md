@@ -39,7 +39,7 @@ One way to do this is to take advantage of the first few minutes of the exam to 
 Here's the contents of my `~/.bash_aliases` file:
 
 ```bash
-alias k=kubectl
+alias k="kubectl"
 alias kn="kubectl config set-context --current --namespace"
 alias ka="kubectl apply -f"
 
