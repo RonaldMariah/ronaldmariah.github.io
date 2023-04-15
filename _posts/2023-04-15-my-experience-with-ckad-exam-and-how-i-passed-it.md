@@ -36,7 +36,7 @@ One way to do this is to take advantage of the first few minutes of the exam to 
 
 **Bash Aliases**
 
-Here's the contents of my `v~/.bash_aliases` file:
+Here's the contents of my `~/.bash_aliases` file:
 
 ```bash
 alias k=kubectl
