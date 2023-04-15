@@ -61,7 +61,7 @@ export now="--force --grace-period 0"
 
 Here's the contents of my `~/.vimrc` file
 
-```arduino
+```bash
 set rnu nu et ai ic sts=-1 ts=2 sw=2
 ```
 
