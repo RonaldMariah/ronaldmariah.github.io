@@ -5,7 +5,7 @@ permalink: /about/
 ---
 # Who am I?
 
-Ronald Mariah is a DevOps Lead currently contributing to the technical direction of the DevOps landscape at BET Software.
+Ronald Mariah is a Senior DevOps Enigneer at Equal Experts.
 An Honours graduate in Computer Science at the University of KwaZulu-Natal, Ronald is passionate about contributing to the communities in and around Durban.
 
 <div id="badges" class="img-container">
