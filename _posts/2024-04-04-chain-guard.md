@@ -1,5 +1,5 @@
 ---
-title: ChainGuard
+title: 'Securing the Future: How Chainguard Reinvents Container Security for DevOps'
 categories:
 - Docker
 - Security
