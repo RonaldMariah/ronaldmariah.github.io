@@ -30,8 +30,8 @@ The third principle of the 12-Factor App methodology focuses on config—storing
 
 **Key Takeaways from the 12-Factor Config Principle:**
 
-Keep codebase clean of sensitive config data: Config data should not be included in the code repository.
-Store config in the environment: Configuration that varies between deployments should be stored in the environment where the application runs.
+- **Keep codebase clean of sensitive config data:** Config data should not be included in the code repository.
+- **Store config in the environment:** Configuration that varies between deployments should be stored in the environment where the application runs.
 
 **How Azure App Configuration and Feature Flags Uphold the 12-Factor Principles**
 
@@ -47,12 +47,12 @@ Feature flags take the concept of dynamic configurations further by allowing dev
 
 **Practical Steps to Implement Azure App Configuration and Feature Flags:**
 
-Set Up Azure App Configuration: Establish a dedicated store for configuration data, adhering to the principle of external configuration management.
-Define and Manage Feature Flags: Use Azure App Configuration to define and manage feature flags, decoupling feature releases from code deployments.
-Integrate with Applications: Utilize Azure SDKs to integrate configuration management into your applications without embedding config data in the codebase.
+- **Set Up Azure App Configuration:** Establish a dedicated store for configuration data, adhering to the principle of external configuration management.
+- **Define and Manage Feature Flags:** Use Azure App Configuration to define and manage feature flags, decoupling feature releases from code deployments.
+- **Integrate with Applications:** Utilize Azure SDKs to integrate configuration management into your applications without embedding config data in the codebase.
 
 **Conclusion**
 
 By leveraging Azure App Configuration and feature flags, developers can align with the 12-Factor App methodology, particularly the config principle, which is crucial for modern cloud-native applications. These tools not only enhance operational efficiency but also bolster the security and scalability of applications across various environments. For developers committed to following the 12-Factor guidelines, Azure provides a robust platform that supports best practices in software development.
 
-For more detailed guidance on implementing these practices, refer to the Azure App Configuration documentation and explore how these tools can transform your application management strategies to be more in line with 12-Factor App principles.
+For more detailed guidance on implementing these practices, refer to the [Azure App Configuration documentation](https://learn.microsoft.com/en-us/azure/azure-app-configuration/overview) and explore how these tools can transform your application management strategies to be more in line with 12-Factor App principles.
