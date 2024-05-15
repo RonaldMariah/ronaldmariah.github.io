@@ -25,7 +25,7 @@ For instance, if a project has a bus factor of one, it means that there is one p
 - **Sustainable Growth:** Organizations aiming for long-term success must avoid over-reliance on specific individuals. A higher bus factor supports sustainable growth by fostering a culture of collaboration and shared responsibility.
 
 **Strategies to Increase the Bus Factor**
-Documentation: Comprehensive documentation of processes, code, and project details ensures that critical information is accessible to all team members. This reduces dependency on individuals with unique knowledge.
+- **Documentation:** Comprehensive documentation of processes, code, and project details ensures that critical information is accessible to all team members. This reduces dependency on individuals with unique knowledge.
 
 - **Cross-Training:** Encouraging team members to learn multiple roles and skills not only enhances their professional growth but also ensures that the team can cover for absences without significant disruption.
 
