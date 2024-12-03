@@ -72,14 +72,14 @@ Code is developed using .NET/C#
 Code completions for the following was helpful
 
 ```cs
-# auto-generation of for-loops
+// auto-generation of for-loops
 for(var i = 0; i < leftList.Count; i++)
 
-# Copilot knew I wanted to get all the lines of the input so suggested I split on the new line character
+// Copilot knew I wanted to get all the lines of the input so suggested I split on the new line character
 input.Split("\n", StringSplitOptions.RemoveEmptyEntries);
 line.Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
-# with the context comment of "# sort the lists"
+// with the context comment of "# sort the lists"
 leftList.Sort();
 rightList.Sort();
 
