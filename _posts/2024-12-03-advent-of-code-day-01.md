@@ -24,7 +24,7 @@ Day 01: [https://adventofcode.com/2024/day/1](https://adventofcode.com/2024/day/
 
 Code is developed using .NET/C#
 
-```
+```cs
     public object PartOne(string input)
     {
         var (leftList, rightList) = ParseInput(input);
@@ -71,7 +71,7 @@ Code is developed using .NET/C#
 
 Code completions for the following was helpful
 
-```
+```cs
 # auto-generation of for-loops
 for(var i = 0; i < leftList.Count; i++)
 
